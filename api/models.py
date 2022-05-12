@@ -10,7 +10,7 @@ def upload_avatar_path(instance, filename):
     # avatar画像のファイル名をUserIDとして、media/avatars フォルダに保存する。
     return '/'.join(['avatars', str(instance.user_profile.id)+str('.')+str(ext)])
 
-class Profile(modelsModel):
+class Profile(models.Model):
     # このProfileクラスとDjangoのUserモデルを一対一対応で結びつける
     user_profile = models.OneToOneField(
         User,
