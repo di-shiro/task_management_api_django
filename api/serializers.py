@@ -40,6 +40,7 @@ class TaskSerializer(serializers.ModelSerializer):
     '''
     category_item = serializers.ReadOnlyField(source='category.item', read_only=True)
     owner_username = serializers.ReadOnlyField(source='owner.username', read_only=True)
+    responsible_username = serializers.ReadOnlyField(source='responsible.username', read_only=True)
     status_name = serializers.CharField(source='get_status_display', read_only=True)
     ''' get_status_display は、models.pyに定義した下の、dict構造を示している。
     例えば、statusは「STATUS」のことで、displayはvalue部分の「Not started」のことを示している。
@@ -49,8 +50,8 @@ class TaskSerializer(serializers.ModelSerializer):
     #     ('3', 'Done'),
     # }
     '''
-    created_at = serializers.DateTimeField(format='%Y-%m-%d %H:%M:', read_only=True)
-    updated_at = serializers.DateTimeField(format='%Y-%m-%d %H:%M:', read_only=True)
+    created_at = serializers.DateTimeField(format="%Y-%m-%d %H:%M", read_only=True)
+    updated_at = serializers.DateTimeField(format="%Y-%m-%d %H:%M", read_only=True)
     # 日時のデータ形式をシリアル形式から人が理解しやすいYMD形式にフォーマットを変えている。
 
     class Meta:
